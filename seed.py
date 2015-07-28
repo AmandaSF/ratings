@@ -68,7 +68,7 @@ def load_ratings():
             new_rating = Rating(user_id=int(user_id), movie_id=int(movie_id), score=int(score))
 #             print new_rating                              #code check
             db.session.add(new_rating)
-    db.session.commit()
+        db.session.commit()
   
 
 
