@@ -25,7 +25,7 @@ def index():
     return render_template("homepage.html")
 
 
-@app.route('/users')
+@app.route('/user-list')
 def user_list():
     """Show list of users."""
 
@@ -45,7 +45,7 @@ def submit_login():
     email = request.form.get('email')
     password = request.form.get('password')
 
-    user = User.get_by_email_password(email, password)
+    user = User.query.filter_by(email=email).first()
 
     if not user:
         flash("Type it in again, foo!")
@@ -58,21 +58,23 @@ def submit_login():
 
     session["logged_in"] = user.email
     flash("You have been successfully logged in!")
-    return redirect('/')
+    return redirect('/user-page')
 
 
-# we're trying to figure out why we can't access this when we press logout button
-# we still dont know if this will even log the user out
-@app.route('/button', methods=['POST'])
+@app.route('/button')
 def logout():
     """This form will logout users."""
-    #remove session ID
-    # del session["password"]
-    # del session["email"]
     
-    # flash("See you later! ;)")
+    del session["logged_in"]
+    flash("See you later! ;)")
     return redirect('/')
 
+@app.route('/user-page/<int:user_id>')
+def user_page(user_id):
+
+    user_id = session.get('email')
+
+    render_template("user_page.html")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h2>{{ user.user_id }}</h2>
+    <ul>
+
+          <li>
+              <a href="/user-list/{{ user.user_id }}">
+                {{ user.email }} ({{ user.user_id }})
+              </a>
+          </li>
+          <li>
+            {{ user.age }}
+          </li>
+          <li>
+            {{ user.zipcode }}
+          </li>
+          <li>
+            {{ User.query(Movie.title).join(Rating).join(Movie)}}
+      
+    </ul>
+
+{% endblock %}
