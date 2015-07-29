@@ -42,9 +42,21 @@ def login():
 def submit_login():
     """This form will submit login information & return you to the homepage."""
     
-    session['email'] = request.form.get('email')
-    session['password'] = request.form.get('password')
-    
+    email = request.form.get('email')
+    password = request.form.get('password')
+
+    user = User.get_by_email_password(email, password)
+
+    if not user:
+        flash("Type it in again, foo!")
+        return redirect("/login-form")
+
+    if user.password != password:
+        flash("Stop trying to break in!")
+        return redirect("/login-form")
+
+
+    session["logged_in"] = user.email
     flash("You have been successfully logged in!")
     return redirect('/')
 

@@ -27,6 +27,21 @@ class User(db.Model):
         """Provide helpful representation when printed."""
         return "<User user_id=%s email=%s>" % (self.user_id, self.email)
 
+    @classmethod
+    def get_by_email_password(cls, email, password):
+        """get user information by email for login purposes"""
+
+        User.query.filter_by(email=email).one()
+        #from this point we need to create if statements
+        #fix server.py to reconcile with new aspects of THIS fuction
+        # 
+
+
+        if not row:
+            return None
+        user = User(*row)
+
+        return user
 
 class Movie(db.Model):
     """Movie info in rating website."""
@@ -69,6 +84,8 @@ class Rating(db.Model):
 
 ##############################################################################
 # Helper functions
+
+
 
 def connect_to_db(app):
     """Connect the database to our Flask app."""
