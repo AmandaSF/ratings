@@ -49,12 +49,16 @@ def submit_login():
     return redirect('/')
 
 
-@app.route('/button')
+# we're trying to figure out why we can't access this when we press logout button
+# we still dont know if this will even log the user out
+@app.route('/button', methods=['POST'])
 def logout():
     """This form will logout users."""
     #remove session ID
+    # del session["password"]
+    # del session["email"]
     
-    flash("See you later! ;)")
+    # flash("See you later! ;)")
     return redirect('/')
 
 
