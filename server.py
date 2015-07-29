@@ -38,12 +38,26 @@ def login():
 
     return render_template("login_form.html")
 
-@app.route('/login')
+@app.route('/login', methods=['POST'])
 def submit_login():
     """This form will submit login information & return you to the homepage."""
-
-
+    
+    session['email'] = request.form.get('email')
+    session['password'] = request.form.get('password')
+    
+    flash("You have been successfully logged in!")
     return redirect('/')
+
+
+@app.route('/button')
+def logout():
+    """This form will logout users."""
+    #remove session ID
+    
+    flash("See you later! ;)")
+    return redirect('/')
+
+
 
 if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the point
