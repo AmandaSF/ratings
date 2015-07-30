@@ -58,7 +58,7 @@ def submit_login():
 
     session["logged_in"] = user.email
     flash("You have been successfully logged in!")
-    return redirect('/user-page')
+    return redirect('/user-page/%d' % user.user_id)
 
 
 @app.route('/button')
@@ -72,7 +72,8 @@ def logout():
 @app.route('/user-page/<int:user_id>')
 def user_page(user_id):
 
-    user_id = session.get('email')
+    # user_id = session.get('email')
+
 
     render_template("user_page.html")
 
