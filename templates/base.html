@@ -14,10 +14,8 @@
 
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li>
                     <a href="/login-form">
                     </a>
-                </li>
                 {% if session.get('logged_in') %}
                 <li><a href="/button">Log Out</a></li>
                 {% else %}

@@ -71,11 +71,17 @@ def logout():
 
 @app.route('/user-page/<int:user_id>')
 def user_page(user_id):
+    """ the user's personal webpage to remind us who they are, 
+    cus sometimes we forget"""
 
-    # user_id = session.get('email')
+    user_id = User.query.filter_by(user_id=user_id).first()
+    email = user_id.email
+    zipcode = user_id.zipcode
+    age = user_id.age
 
 
-    render_template("user_page.html")
+    return render_template("user_page.html", email=email, user_id=user_id,
+        zipcode=zipcode, age=age)
 
 
 if __name__ == "__main__":
