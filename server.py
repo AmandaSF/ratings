@@ -74,13 +74,14 @@ def user_page(user_id):
     """ the user's personal webpage to remind us who they are, 
     cus sometimes we forget"""
 
-    user_id = User.query.filter_by(user_id=user_id).first()
-    email = user_id.email
-    zipcode = user_id.zipcode
-    age = user_id.age
+    current_user = User.query.filter_by(user_id=user_id).first()
+    email = current_user.email
+    zipcode = current_user.zipcode
+    age = current_user.age
+    thing = current_user.user_id
 
     movie_list = db.session.query(Rating.score, 
-        Movie.title).join(Movie).filter(Rating.user_id==1).all()
+        Movie.title).join(Movie).filter(Rating.user_id==thing).all()
 
 
 
