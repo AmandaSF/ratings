@@ -11,7 +11,6 @@ db = SQLAlchemy()
 
 ##############################################################################
 # Model definitions
-# Delete this line and put your User/Movie/Ratings model classes here.
 class User(db.Model):
     """User of rating website."""
 
@@ -87,3 +86,8 @@ if __name__ == "__main__":
     from server import app
     connect_to_db(app)
     print "Connected to DB."
+
+
+
+
+    #  rating_id = Rating.query.filter_by(user_id=1).first()

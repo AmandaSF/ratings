@@ -9,6 +9,15 @@
           <li>
            Your Zipcode: {{ zipcode }}
           </li>
+    </ul>
+    <ul> 
+       {% for movie in movie_list %}
+        <li>
+      <a href="/movie-list/{{ movie }}">
+            {{ movie }}
+          </a>
+          </li>
+          {% endfor %}
             
     </ul> 
 

@@ -79,10 +79,18 @@ def user_page(user_id):
     zipcode = user_id.zipcode
     age = user_id.age
 
+    movie_list = db.session.query(Rating.score, 
+        Movie.title).join(Movie).filter(Rating.user_id==1).all()
+
+
 
     return render_template("user_page.html", email=email, user_id=user_id,
-        zipcode=zipcode, age=age)
+        zipcode=zipcode, age=age, movie_list=movie_list)
 
+@app.route('/a')
+def thing():
+    
+    return
 
 if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the point
