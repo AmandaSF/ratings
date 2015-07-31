@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ title }}</h2>
+  
+<ul>
+  <li>
+  Release Year: {{ released }}
+  </li>
+  <li> 
+  IMDB URL: {{ url }}
+  </li>
+  {% for rating in movie_rating %}
+  <li>
+      <a href="/movie-list/{{ rating }}">
+          {{ rating }}</a>
+   </li>
+   {% endfor %}      
+</ul>
+{% endblock %}
+
+

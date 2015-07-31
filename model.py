@@ -38,7 +38,7 @@ class Movie(db.Model):
 
     def __repr__(self):
         """Provide helpful representation when printed."""
-        return "<Movie movie_id=%s title=%s released_at=%d>" % (
+        return "<Movie movie_id=%s title=%s released_at=%r>" % (
             self.movie_id, self.title, self.released_at)
 
 class Rating(db.Model):
@@ -90,4 +90,3 @@ if __name__ == "__main__":
 
 
 
-    #  rating_id = Rating.query.filter_by(user_id=1).first()

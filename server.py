@@ -88,10 +88,33 @@ def user_page(user_id):
     return render_template("user_page.html", email=email, user_id=user_id,
         zipcode=zipcode, age=age, movie_list=movie_list)
 
-@app.route('/a')
-def thing():
-    
-    return
+@app.route('/movies')
+def full_list_of_movies():
+    """this returns the full list of movies in the database. Includes link
+    to individual movie page."""
+
+    movie_list = Movie.query.order_by(Movie.title).all()
+    return render_template('movie_list.html', movie_list=movie_list)
+
+@app.route('/movie-page/<int:movie_id>')
+def movie_page(movie_id):
+    """Contains all of the information about a particular movie in our
+    database."""
+
+    current_movie = Movie.query.filter_by(movie_id=movie_id).first()
+    title = current_movie.title
+    released = current_movie.released_at
+    url = current_movie.imdb_url
+    thing = current_movie.movie_id
+
+    movie_rating = db.session.query(Rating.score).join(Movie).filter(
+        Movie.movie_id==thing).all()
+
+    return render_template('movie_page.html', current_movie=current_movie, 
+        title=title, released=released, url=url, movie_rating=movie_rating)
+
+
+
 
 if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the point
