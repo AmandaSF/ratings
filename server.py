@@ -113,8 +113,21 @@ def movie_page(movie_id):
     return render_template('movie_page.html', current_movie=current_movie, 
         title=title, released=released, url=url, movie_rating=movie_rating)
 
+@app.route('/accept-rating')
+def accept_rating():
+    """Allows users to both add new rating OR update and existing rating."""
 
+    #take them to a form
+    
+    #if statement
+    #create sqla to add a new rating
+    #flash message that says "rating has been added"
 
+    #else statement
+    #create sqla to update user rating
+    #flash message that says "rating has been updated"
+
+    #return redirect to movie title page
 
 if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the point
