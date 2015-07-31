@@ -113,12 +113,23 @@ def movie_page(movie_id):
     return render_template('movie_page.html', current_movie=current_movie, 
         title=title, released=released, url=url, movie_rating=movie_rating)
 
+
+@app.route('/form-to-rating')
+def form_to_rating():
+    """redirects user to accept rating form"""
+    print "are we here yet?"
+    return render_template('accept_rating.html')
+
+#do we need to grab the movie ID at this point? Probably???
+
 @app.route('/accept-rating')
 def accept_rating():
     """Allows users to both add new rating OR update and existing rating."""
-
-    #take them to a form
     
+    return
+
+    #def needs to get the movie id so that rating can be tied to movie
+
     #if statement
     #create sqla to add a new rating
     #flash message that says "rating has been added"

@@ -8,13 +8,17 @@
   </li>
   <li> 
   IMDB URL: {{ url }}
+  <li>
+  <a href="/form-to-rating/">Would you like to add or update your review?</a>
+</li>
   </li>
   {% for rating in movie_rating %}
   <li>
       <a href="/movie-list/{{ rating }}">
-          {{ rating }}</a>
+          {{ rating[0] }}</a>
    </li>
-   {% endfor %}      
+   {% endfor %}  
+
 </ul>
 {% endblock %}
 

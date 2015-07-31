@@ -13,7 +13,7 @@
   {% for movie in movie_list %}
   <li>
       <a href="/movie-list/{{ movie }}">
-          {{ movie }}</a>
+          {{ movie[0] }} {{ movie[1] }}</a>
  </li>
         {% endfor %}
         
