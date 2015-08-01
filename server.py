@@ -114,12 +114,14 @@ def movie_page(movie_id):
         title=title, released=released, url=url, movie_rating=movie_rating)
 
 
-@app.route('/form-to-rating')
-def form_to_rating():
+@app.route('/rating-form')
+def rating_form(movie_id):
     """redirects user to accept rating form"""
 
-    print "are we here yet?"
-    return render_template('accept_rating.html')
+    current_movie = Movie.query.filter_by(movie_id=movie_id).first()
+    title = current_movie.title
+
+    return render_template('rating_form.html', title=title)
 
 #do we need to grab the movie ID at this point? Probably???
 
