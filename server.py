@@ -117,6 +117,7 @@ def movie_page(movie_id):
 @app.route('/form-to-rating')
 def form_to_rating():
     """redirects user to accept rating form"""
+
     print "are we here yet?"
     return render_template('accept_rating.html')
 
